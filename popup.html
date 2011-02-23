@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head> 
+    <meta charset="utf-8" /> 
+    <title>mPass</title> 
+    <script src="sha512.js"></script> 
+    <script> 
+        //<![CDATA[
+        function mPass()
+        {           
+            // use jsSHA ( http://jssha.sourceforge.net/ ) to calculate
+            // site-specific password
+            var shaObj = new jsSHA(document.getElementById("domain").value,
+                                   "ASCII");
+            var pwd = shaObj.getHMAC(document.getElementById(
+                    "master-password").value, "ASCII", "SHA-512",
+                    "B64").substr(0,10);
+            // search through all forms on the webpage for a password field;
+            // when found, submit the form
+            // (also adds a hidden field called "login" as a work-around for
+            // some forms)
+            chrome.tabs.executeScript(null, {code:'(function(){var F,j,f,i,b; b=true; F = document.forms; for(j=0; j<F.length && b; ++j) { f = F[j]; for (i=0; i<f.length && b; ++i) { if (f[i].type.toLowerCase() == "password") { f[i].value = "'+pwd+'"; b=false; var login = document.createElement("input"); login.type="hidden"; login.name="login"; f[i].appendChild(login); f.submit();} } } })();'});
+            // closes the mPass popup
+            window.close();
+        }
+        window.addEventListener("load", initialize, false);
+        function initialize()
+        {
+            // extract the URL of the current page and put it in the Domain field
+            chrome.tabs.getSelected(null, function(tab){
+                document.getElementById("domain").value = tab.url.replace("http://","").replace("https://","").replace("www.","").split("/")[0];
+            });
+        }
+        //]]>
+    </script> 
+    <link rel="stylesheet" href="mpass.css" />
+</head> 
+
+ 
+<body> 
+ 
+    <header> 
+        <b>mPass<b>
+        <br /> 
+        <span style="font-size:80%">(<a href="help.html" target="_blank">help</a>)</span> 
+    </header> 
+ 
+    <section id="ui">
+    
+        <form class="popup" onsubmit="return false"> 
+            <ol> 
+            
+                <li> 
+                    <label for="domain">Site URL</label><br /> 
+                    <input id="domain" value="google.com" /> 
+                </li> 
+                
+                <li> 
+                    <label for="master-password">Master Password</label><br /> 
+                    <input id="master-password" type="password" autofocus
+                        onchange="mPass()" /> 
+                </li> 
+                
+                <li> 
+                    <input type="button" id="calculate-button"
+                        value="Login" onclick="mPass()" /> 
+                </li>
+                
+            </ol> 
+        
+        </div>
+    </section> 
+ 
+</html> 

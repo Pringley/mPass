@@ -1,0 +1,115 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+ 
+<head> 
+    <meta charset="utf-8" /> 
+    <title>mPass FAQ</title> 
+    <script src="modernizr-1.6.min.js"></script> 
+    <link rel="stylesheet" href="mpass.css" /> 
+    <link rel="shortcut icon" href="favicon.ico" /></head> 
+ 
+<body> 
+ 
+    <header> 
+        <h1>mPass FAQ</h1> 
+        <br /> 
+        <span style="font-size:80%">(<a href="index.html">back to mPass</a>)</span> 
+    </header> 
+ 
+    <section> 
+        <br />        
+        <h1>What <i>is</i> mPass?</h1> 
+        
+        <p> 
+            Simply put, mPass is a manageable way to maintain secure and unique passwords
+            for the dozens of web services we use every day. Instead of saving all your
+            passwords to your hard drive or trusting them to a third party, though, mPass
+            uses the mathematical concept of a <b>one-way function</b> to "remember" your
+            passwords.
+        </p> 
+        
+        <p> 
+            You start by creating a <b>Master Password</b>&#8212;a single, strong password
+            that you need to memorize. Then, each time you sign up for a new web service,
+            use the <a href="index.html">mPass script</a> to calculate a brand new password
+            by combining your Master Password with the URL of the website. Give the service
+            this <b>Site-Specific Password</b>, keeping your Master Password known to
+            yourself only.
+        </p> 
+        
+        <p> 
+            Whenever you need to log in to a web service, simply revisit the
+            <a href="index.html">mPass page</a> to recalculate your password. You
+            only have to remember your one Master Password, yet you can still reap the
+            benefits of having different passwords for all your web services.
+        </p> 
+        
+        <p> 
+            If you use <a href="http://www.google.com/chrome">Google Chrome</a>, there
+            is a (free) mPass extension available at the <a href="https://chrome.google.com/webstore/detail/chdknmgalfodlikcknjdcakoihkjkpep">Web Store</a>.
+        </p> 
+        
+        <h1>Why should I use it?</h1> 
+        
+        <p> 
+            One of the worst things you can do on the internet is to use the same
+            password (or few passwords) on every web service you sign up for. If just
+            one of the websites you visit is compromised, then all of the others are
+            vulnerable as well.
+        </p> 
+        
+        <p> 
+            The solution, of course, is to use different login credentials for each
+            different service. In practice, though, this can be hard&#8212;who can remember
+            a dozen different passwords? One solution is to use a password management
+            program that stores your different passwords either on your hard drive or
+            on a web server. Good ones can even cost money.
+        </p> 
+        
+        <p> 
+            Instead of storing your passwords somewhere, mPass only calculates them
+            when you need them. This way, there's no database that can be compromised,
+            making your information that much safer.
+        </p> 
+        
+        <h1>It's not working!</h1> 
+        
+        <p> 
+            Make sure you have Javascript enabled in your browser's options.
+        </p> 
+        
+        <p> 
+            Also, keep in mind that mPass is <b>case sensitive</b>. For example,
+            "google.com" is different from "Google.com" because of the capital
+            letter. If you change the capitalization, you will see a different
+            password.
+        </p> 
+        
+        <h1>Can I get some technical details?</h1> 
+        
+        <p> 
+            The mPass script outputs the first ten digits in
+            <a href="http://en.wikipedia.org/wiki/Base64">base64</a> of a
+            <a href="http://en.wikipedia.org/wiki/SHA_512">SHA-512</a> 
+            <a href="http://en.wikipedia.org/wiki/HMAC">HMAC</a> with a "master
+            password" as the key and a domain as the message. This means that
+            it should be computationally infeasible to determine any site-specific
+            password without the master one, even if one or more of the other
+            site-specific passwords is compromised. This page calculates the hashes
+            using the <a href="http://jssha.sourceforge.net/">jsSHA</a> 
+            implementation of SHA-512 in Javascript, so all of the computation
+            is done by your browser. (None of your information is sent to the
+            server).
+        </p> 
+        
+        <h1>This FAQ doesn't answer my question.</h1> 
+        
+        <p> 
+            Send an email to <img src="../email.png" alt="email" /> with your
+            question or comment.
+        </p> 
+        
+    </section> 
+ 
+</html>
+
