@@ -1,3 +1,33 @@
-mPass is a manageable way to maintain secure and unique passwords for the dozens of web services we use every day. Instead of saving all your passwords to your hard drive or trusting them to a third party, though, mPass uses the mathematical concept of a one-way function to "remember" your passwords.
+mPass is a manageable way to maintain secure and unique passwords for
+the dozens of web services we use every day. Instead of saving all your
+passwords to your hard drive or trusting them to a third party, though,
+mPass uses the mathematical concept of a one-way function to "remember"
+your passwords.
 
-mPass is really more of a specification than an application. It takes a SHA-512 HMAC of a given domain (using a "master password" as the key) and outputs the first ten digits in base 64.
+mPass is really more of a specification than an application. It takes a
+SHA-512 HMAC of a given domain (using a "master password" as the key)
+and outputs the first ten digits in base 64. This process is relatively
+simple, so it is implemented on several platforms:
+
+Python Script
+ - usage:
+     $ python mpass.py
+     Domain: @google.com         <--- domain name
+     Master Password: ******     <--- memorized master password
+     VG6bDpjQg+                  <--- generated site-specific password
+
+Web Page (Javascript)
+ - usage:
+     Open index.html in a web browser.
+     Type the domain name into the "Site URL" field.
+     Type your master password in the "Master Password" field.
+     Hit the "Calculate" button.
+
+Chrome Extension
+ - usage:
+     Install the extension. (only once, obviously)
+     Navigate to the login page of the website you wish to access.
+     Type in your username.
+     Click the mPass icon and enter your memorized master password.
+     The extension will automatically generate and enter your
+         site-specific password and log you in.
