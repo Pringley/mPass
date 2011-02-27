@@ -1,7 +1,8 @@
 {
     "name": "mPass",
-    "version": "0.5",
+    "version": "0.5.3",
     "description": "A secure password manager.",
+    "background_page": "background.html",
     "icons": {
         "16": "icon16.png",
         "48": "icon48.png",
@@ -12,6 +13,6 @@
         "popup": "popup.html"
     },
     "permissions": [
-        "tabs", "http://*/*", "https://*/*"
+        "tabs", "http://*/*", "https://*/*","contextMenus"
     ]
 }
