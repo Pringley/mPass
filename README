@@ -1,3 +1,12 @@
+This package is deprecated -- Chrome uses a new extension manifest now.
+Also, the security of using Javascript in the browser is suspect.
+
+For now, the more up-to-date Python CLI is recommended:
+
+https://github.com/Pringley/mpass-python
+
+* * * * *
+
 mPass is a manageable way to maintain secure and unique passwords for
 the dozens of web services we use every day. Instead of saving all your
 passwords to your hard drive or trusting them to a third party, though,
